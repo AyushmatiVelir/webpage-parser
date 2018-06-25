@@ -22,3 +22,45 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.img-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	background-color: #eeeeee;
+	align-items: center;
+}
+
+.img-container img {
+	width: 33.3%;
+	padding: 20px;
+}
+
+table#wordcount {
+	width: 100%;
+	font-size: 16px;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table#wordcount tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+
+#wordcount th {
+	padding-top: 11px;
+	padding-bottom: 11px;
+	background-color: #eeeeee;
+	color: grey;
+	border: 1px solid #ddd;
+	text-align: left;
+	padding: 8px;
+}
+
+#wordcount td {
+	border: 1px solid #ddd;
+	text-align: left;
+	padding: 8px;
+}

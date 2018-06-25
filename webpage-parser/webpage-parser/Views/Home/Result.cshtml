@@ -1,5 +1,5 @@
 ﻿@{
-	ViewBag.Title = "Results: ";
+	ViewBag.Title = "Results";
 }
 @model webpage_parser.Models.ParseResultModel
 
@@ -10,22 +10,30 @@
 {
 	if (Model.ImageUrls != null && Model.ImageUrls.Any())
 	{
-		foreach (var imageUrl in Model.ImageUrls)
-		{
-			<img src="@imageUrl" alt="Parsed Image" />
-		}
+		<h3>Parsed Images</h3>
+		<div class="img-container">
+			@foreach (var imageUrl in Model.ImageUrls)
+			{
+				<img src="@imageUrl" alt="Parsed Image" />
+			}
+		</div>
 	}
 	if (Model.TopWordCounts != null && Model.TopWordCounts.Count > 0)
 	{
-		<div>
+		<h3>Word Counts</h3>
+		<table id="wordcount">
+			<tr>
+				<th>Word</th>
+				<th>Count</th>
+			</tr>
 			@foreach (var wordCount in Model.TopWordCounts)
 			{
-				<p>
-					<span>@wordCount.Key</span> : <span>@wordCount.Value</span>
-				</p>
-
+				<tr>
+					<td>@wordCount.Key</td>
+					<td>@wordCount.Value</td>
+				</tr>
 			}
-		</div>
+		</table>
 	}
 }
 else
