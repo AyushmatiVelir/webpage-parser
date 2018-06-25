@@ -1,17 +1,35 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+	ViewBag.Title = "Contact";
 }
+@model webpage_parser.Models.ParseResultModel
+
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@if (Model != null)
+{
+	if (Model.ImageUrls.Any())
+	{
+		foreach (var imageUrl in Model.ImageUrls)
+		{
+			<img src="@imageUrl" alt="Parsed Image" />
+		}
+	}
+	if (Model.TopWordCounts.Count > 0)
+	{
+		<div>
+			@foreach (var wordCount in Model.TopWordCounts)
+			{
+				<p>
+					<span>@wordCount.Key</span> : <span>@wordCount.Value</span>
+				</p>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+			}
+		</div>
+	}
+}
+else
+{
+	<p>Sorry something went wrong! Please try with some other url!</p>
+	<span>@Html.ActionLink("Home", "Index", "Home")</span>
+}

@@ -80,3 +80,6 @@ C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\bin\Microsoft.
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\obj\Debug\webpage-parser.csprojResolveAssemblyReference.cache
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\obj\Debug\webpage-parser.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\obj\Debug\webpage-parser.pdb
+C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\bin\HtmlAgilityPack.dll
+C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\bin\HtmlAgilityPack.pdb
+C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser\bin\HtmlAgilityPack.xml

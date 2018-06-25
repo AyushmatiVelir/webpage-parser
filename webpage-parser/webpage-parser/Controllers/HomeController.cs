@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using webpage_parser.Models;
+using webpage_parser.Services;
 
 namespace webpage_parser.Controllers
 {
@@ -28,17 +29,23 @@ namespace webpage_parser.Controllers
 			return View();
 		}
 
-		
+
 		[HttpPost]
 		public ActionResult Parse(ParserModel model)
 		{
-			if (ModelState.IsValid)
-			{
-				//TODO: SubscribeUser(model.Email);
-			}
+			if (!ModelState.IsValid) return View("Contact", null);
 
-			//return View("Index", model);
-			return View("Contact");
+			IParserService parser = new ParserService();
+			if (parser.IsValidUrl(model.Url))
+			{
+				var resultModel = new ParseResultModel
+				{
+					ImageUrls = parser.GetPictures(model.Url),
+					TopWordCounts = parser.GetTopNWordCount(model.Url, 8)
+				};
+				return View("Contact", resultModel);
+			}
+			return View("Contact", null);
 		}
 	}
 }
