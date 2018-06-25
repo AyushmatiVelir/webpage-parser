@@ -7,7 +7,7 @@ namespace webpage_parser.Models
 {
 	public class ParseResultModel
 	{
-		public IEnumerable<string> ImageUrls { get; set; }
+		public List<string> ImageUrls { get; set; }
 		public Dictionary<string, int> TopWordCounts { get; set; }
 	}
 }

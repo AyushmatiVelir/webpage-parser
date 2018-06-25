@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HtmlAgilityPack;
 using webpage_parser.Models;
 using webpage_parser.Services;
 
@@ -36,11 +37,7 @@ namespace webpage_parser.Controllers
 			
 			if (_service.IsValidUrl(model.Url))
 			{
-				var resultModel = new ParseResultModel
-				{
-					ImageUrls = _service.GetPictures(model.Url),
-					TopWordCounts = _service.GetTopNWordCount(model.Url, 8)
-				};
+				var resultModel = _service.GetParsedResults(model.Url);
 				return View("Result", resultModel);
 			}
 			return View("Result", null);
