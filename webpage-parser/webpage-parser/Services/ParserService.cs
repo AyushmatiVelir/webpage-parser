@@ -15,18 +15,6 @@ namespace webpage_parser.Services
 			return Uri.TryCreate(url, UriKind.Absolute, out uriResult)
 				   && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 		}
-
-		private string GetAbsoluteUrl(string websiteUrl, string imgSrc)
-		{
-			return $"{GetUrlHost(websiteUrl)}/{imgSrc}";
-		}
-
-		private string GetUrlHost(string websiteUrl)
-		{
-			var siteUri = new Uri(websiteUrl);
-			return siteUri.GetLeftPart(UriPartial.Authority);
-		}
-
 		public IEnumerable<string> GetPictures(string url)
 		{
 			var web = new HtmlWeb();
@@ -56,11 +44,19 @@ namespace webpage_parser.Services
 			var topWordCounts = words.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()).OrderByDescending(entry => entry.Value).Take(8);
 			return topWordCounts.ToDictionary(pair => pair.Key, pair => pair.Value);
 		}
-
-		private List<string> GetWordsfromText(string text)
+		private string GetAbsoluteUrl(string websiteUrl, string imgSrc)
+		{
+			return $"{GetUrlHost(websiteUrl)}/{imgSrc}";
+		}
+		private string GetUrlHost(string websiteUrl)
+		{
+			var siteUri = new Uri(websiteUrl);
+			return siteUri.GetLeftPart(UriPartial.Authority);
+		}
+		private IEnumerable<string> GetWordsfromText(string text)
 		{
 			var punctuation = text.Where(char.IsPunctuation).Distinct().ToArray();
-			var words = text.Split().Select(x => x.Trim(punctuation)).Where(x => !string.IsNullOrWhiteSpace(x)).Where(x => !(x.Length == 1 && char.IsSymbol(x[0]))).ToList();
+			var words = text.Split().Select(x => x.Trim(punctuation)).Where(x => !string.IsNullOrWhiteSpace(x)).Where(x => !(x.Length == 1 && char.IsSymbol(x[0])));
 			return words;
 		}
 	}
