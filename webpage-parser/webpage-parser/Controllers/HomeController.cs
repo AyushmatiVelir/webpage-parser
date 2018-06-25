@@ -15,16 +15,9 @@ namespace webpage_parser.Controllers
 			return View();
 		}
 
-		public ActionResult About()
+		public ActionResult Result()
 		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
+			ViewBag.Message = "Your parsed results.";
 
 			return View();
 		}
@@ -33,7 +26,7 @@ namespace webpage_parser.Controllers
 		[HttpPost]
 		public ActionResult Parse(ParserModel model)
 		{
-			if (!ModelState.IsValid) return View("Contact", null);
+			if (!ModelState.IsValid) return View("Result", null);
 
 			IParserService parser = new ParserService();
 			if (parser.IsValidUrl(model.Url))
@@ -43,9 +36,9 @@ namespace webpage_parser.Controllers
 					ImageUrls = parser.GetPictures(model.Url),
 					TopWordCounts = parser.GetTopNWordCount(model.Url, 8)
 				};
-				return View("Contact", resultModel);
+				return View("Result", resultModel);
 			}
-			return View("Contact", null);
+			return View("Result", null);
 		}
 	}
 }
