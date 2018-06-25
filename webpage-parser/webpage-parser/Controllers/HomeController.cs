@@ -10,6 +10,12 @@ namespace webpage_parser.Controllers
 {
 	public class HomeController : Controller
 	{
+		private IParserService _service;
+
+		public HomeController(IParserService service)
+		{
+			_service = service;
+		}
 		public ActionResult Index()
 		{
 			return View();
@@ -27,14 +33,13 @@ namespace webpage_parser.Controllers
 		public ActionResult Parse(ParserModel model)
 		{
 			if (!ModelState.IsValid) return View("Result", null);
-
-			IParserService parser = new ParserService();
-			if (parser.IsValidUrl(model.Url))
+			
+			if (_service.IsValidUrl(model.Url))
 			{
 				var resultModel = new ParseResultModel
 				{
-					ImageUrls = parser.GetPictures(model.Url),
-					TopWordCounts = parser.GetTopNWordCount(model.Url, 8)
+					ImageUrls = _service.GetPictures(model.Url),
+					TopWordCounts = _service.GetTopNWordCount(model.Url, 8)
 				};
 				return View("Result", resultModel);
 			}

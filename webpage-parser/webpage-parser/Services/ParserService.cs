@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using HtmlAgilityPack;
@@ -18,6 +19,8 @@ namespace webpage_parser.Services
 		public IEnumerable<string> GetPictures(string url)
 		{
 			var web = new HtmlWeb();
+			ServicePointManager.SecurityProtocol =
+				SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			HtmlDocument document = web.Load(url);
 			var imgSrcs = document.DocumentNode.Descendants("img")
 				.Select(e => e.GetAttributeValue("src", null))
@@ -29,6 +32,8 @@ namespace webpage_parser.Services
 		public Dictionary<string, int> GetTopNWordCount(string url, int number)
 		{
 			var web = new HtmlWeb();
+			ServicePointManager.SecurityProtocol =
+				SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 			HtmlDocument document = web.Load(url);
 			var words = new List<string>();
 			foreach (HtmlNode node in document.DocumentNode.SelectNodes("//text()"))
