@@ -8,14 +8,14 @@
 
 @if (Model != null)
 {
-	if (Model.ImageUrls.Any())
+	if (Model.ImageUrls != null && Model.ImageUrls.Any())
 	{
 		foreach (var imageUrl in Model.ImageUrls)
 		{
 			<img src="@imageUrl" alt="Parsed Image" />
 		}
 	}
-	if (Model.TopWordCounts.Count > 0)
+	if (Model.TopWordCounts != null && Model.TopWordCounts.Count > 0)
 	{
 		<div>
 			@foreach (var wordCount in Model.TopWordCounts)
