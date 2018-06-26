@@ -16,6 +16,7 @@ namespace webpage_parser
 
 			// e.g. container.RegisterType<ITestService, TestService>();
 			container.RegisterType<IParserService, ParserService>();
+			container.RegisterType<IDocumentProcessService, DocumentProcessService>();
 			DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 		}
 	}

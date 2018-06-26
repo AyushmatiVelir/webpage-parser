@@ -22,7 +22,6 @@ C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debu
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\System.Web.Optimization.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\System.Web.Mvc.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\Unity.Container.dll
-C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\HtmlAgilityPack.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\Unity.Abstractions.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\Unity.Mvc5.dll
 C:\MyData\MyProjects\webpage-parser\webpage-parser\webpage-parser.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
