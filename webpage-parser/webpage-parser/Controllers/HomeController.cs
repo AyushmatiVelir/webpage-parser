@@ -11,7 +11,7 @@ namespace webpage_parser.Controllers
 {
 	public class HomeController : Controller
 	{
-		private IParserService _service;
+		private readonly IParserService _service;
 
 		public HomeController(IParserService service)
 		{
