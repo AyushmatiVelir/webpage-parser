@@ -23,9 +23,9 @@ namespace webpage_parser.Tests.Services
 		}
 
 		[Test]
-		public void ParserService_GetParsedResults_EmptyString_ReturnsNull()
+		public void ParserService_GetParsedResults_EmptyString_DoesNotThrow()
 		{
-			Assert.IsNull(_parser.GetParsedResults(string.Empty));
+			Assert.DoesNotThrow(()=>_parser.GetParsedResults(string.Empty));
 		}
 	}
 }
