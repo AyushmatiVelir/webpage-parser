@@ -6,9 +6,9 @@
 	<h1>Webpage Parser</h1>
 	@using (Html.BeginForm("Parse", "Home", FormMethod.Post))
 	{
+		<p>Please enter a valid url</p>
 		@Html.TextBoxFor(model => model.Url)
 		@Html.ValidationMessageFor(model => model.Url)
 		<button type="submit">Parse</button>
 	}
 </div>
-

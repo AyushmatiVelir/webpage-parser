@@ -8,7 +8,8 @@ namespace webpage_parser.Models
 {
 	public class ParserModel
 	{
-		[Required]
+		[Required(ErrorMessage = "Required Field")]
+		[Url(ErrorMessage = "Please enter a valid url beginning with http or https.")]
 		public string Url { get; set; }
 	}
 }

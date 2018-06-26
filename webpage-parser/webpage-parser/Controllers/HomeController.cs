@@ -33,7 +33,7 @@ namespace webpage_parser.Controllers
 		[HttpPost]
 		public ActionResult Parse(ParserModel model)
 		{
-			if (!ModelState.IsValid) return View("Result", null);
+			if (!ModelState.IsValid) return View("Index", model);
 			
 			if (_service.IsValidUrl(model.Url))
 			{
