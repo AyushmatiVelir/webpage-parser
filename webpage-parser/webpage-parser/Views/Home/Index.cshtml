@@ -8,7 +8,7 @@
 	{
 		<p>Please enter a valid url</p>
 		@Html.TextBoxFor(model => model.Url)
-		@Html.ValidationMessageFor(model => model.Url)
 		<button type="submit">Parse</button>
+		<p class="text-danger">@Html.ValidationMessageFor(model => model.Url)</p>
 	}
 </div>

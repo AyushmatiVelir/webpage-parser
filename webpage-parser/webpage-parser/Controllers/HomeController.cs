@@ -34,13 +34,8 @@ namespace webpage_parser.Controllers
 		public ActionResult Parse(ParserModel model)
 		{
 			if (!ModelState.IsValid) return View("Index", model);
-			
-			if (_service.IsValidUrl(model.Url))
-			{
-				var resultModel = _service.GetParsedResults(model.Url);
-				return View("Result", resultModel);
-			}
-			return View("Result", null);
+			var resultModel = _service.GetParsedResults(model.Url);
+			return View("Result", resultModel);
 		}
 	}
 }

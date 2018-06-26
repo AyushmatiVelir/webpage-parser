@@ -11,12 +11,6 @@ namespace webpage_parser.Services
 {
 	public class ParserService : IParserService
 	{
-		public bool IsValidUrl(string url)
-		{
-			Uri uriResult;
-			return Uri.TryCreate(url, UriKind.Absolute, out uriResult)
-				   && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-		}
 		public ParseResultModel GetParsedResults(string url)
 		{
 			try
@@ -59,7 +53,6 @@ namespace webpage_parser.Services
 			var topWordCounts = words.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()).OrderByDescending(entry => entry.Value).Take(8);
 			return topWordCounts.ToDictionary(pair => pair.Key, pair => pair.Value);
 		}
-
 		private static HtmlDocument LoadHtmlDocument(string url)
 		{
 			var web = new HtmlWeb();
@@ -87,6 +80,11 @@ namespace webpage_parser.Services
 			var words = text.Split().Select(x => x.Trim(punctuation)).Where(x => !string.IsNullOrWhiteSpace(x)).Where(x => !(x.Length == 1 && char.IsSymbol(x[0])));
 			return words;
 		}
-
+		private static bool IsValidUrl(string url)
+		{
+			Uri uriResult;
+			return Uri.TryCreate(url, UriKind.Absolute, out uriResult)
+			       && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+		}
 	}
 }

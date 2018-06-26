@@ -8,7 +8,6 @@ namespace webpage_parser.Services
 {
 	public interface IParserService
 	{
-		bool IsValidUrl(string url);
 		ParseResultModel GetParsedResults(string url);
 	}
 
